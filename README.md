@@ -1,4 +1,4 @@
-# API REST de Usuarios - Municipalidad de La Florida
+# API REST de Usuarios - Municipalidad de La Florida.
 
 Proyecto realizado para la Evaluación Final Transversal de Herramientas DevOps.
 La aplicación permite listar, buscar, agregar, editar y eliminar usuarios mediante una API REST.
