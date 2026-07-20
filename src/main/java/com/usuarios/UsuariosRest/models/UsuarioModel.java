@@ -21,7 +21,7 @@ public class UsuarioModel {
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     public Long getId() {
