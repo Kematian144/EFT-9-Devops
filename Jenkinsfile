@@ -14,8 +14,7 @@ pipeline {
 
         stage('2. Compilar con Maven') {
             steps {
-                sh 'chmod +x mvnw'
-                sh './mvnw clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
