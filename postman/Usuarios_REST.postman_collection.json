@@ -1,0 +1,77 @@
+{
+  "info": {
+    "_postman_id": "9b423120-0000-4000-8000-000000000001",
+    "name": "EFT - Usuarios REST",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "userId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Listar usuarios - GET",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/user"
+      }
+    },
+    {
+      "name": "Buscar usuario - GET",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/user/{{userId}}"
+      }
+    },
+    {
+      "name": "Agregar usuario - POST",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Camila\",\n  \"lastName\": \"Rojas\",\n  \"email\": \"camila.rojas.eft@gmail.com\"\n}"
+        },
+        "url": "{{baseUrl}}/user"
+      }
+    },
+    {
+      "name": "Editar usuario - PUT",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Camila\",\n  \"lastName\": \"Rojas Soto\",\n  \"email\": \"camila.rojas.actualizada@gmail.com\"\n}"
+        },
+        "url": "{{baseUrl}}/user/{{userId}}"
+      }
+    },
+    {
+      "name": "Eliminar usuario - DELETE",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/user/{{userId}}"
+      }
+    }
+  ]
+}

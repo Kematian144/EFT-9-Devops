@@ -1,0 +1,40 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: municipalidad-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: municipalidad_la_florida
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_USER: municipalidad
+      MYSQL_PASSWORD: municipalidad123
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/municipalidad_la_florida.sql:/docker-entrypoint-initdb.d/01-datos.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    image: usuarios-rest:latest
+    container_name: usuarios-rest
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8081:8080"
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: municipalidad_la_florida
+      DB_USER: municipalidad
+      DB_PASSWORD: municipalidad123
+      SERVER_PORT: 8080
+
+volumes:
+  mysql_data:
