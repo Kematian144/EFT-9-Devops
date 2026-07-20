@@ -8,8 +8,6 @@ services:
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_USER: municipalidad
       MYSQL_PASSWORD: municipalidad123
-    ports:
-      - "127.0.0.1:3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./database/municipalidad_la_florida.sql:/docker-entrypoint-initdb.d/01-datos.sql:ro
